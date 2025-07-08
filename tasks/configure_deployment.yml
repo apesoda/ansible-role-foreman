@@ -31,14 +31,10 @@
         name: 'bind-utils'
         state: 'present'
 
-- name: 'Ensure custom-hiera.yaml for additional DHCP subnets'
+- name: 'Ensure custom-hiera.yaml'
   ansible.builtin.template:
-    src: 'templates/custom-hiera.j2'
+    src: 'templates/custom-hiera.yaml.j2'
     dest: '/etc/foreman-installer/custom-hiera.yaml'
-  when:
-    - foreman_custom_hiera
-    - foreman_instance_dhcp_all_networks
-    - foreman_deploy_dhcp_scenario == 'internal'
 
 - name: 'Configure Foreman instance for deployment'  # yamllint disable rule:line-length
   ansible.builtin.shell: |

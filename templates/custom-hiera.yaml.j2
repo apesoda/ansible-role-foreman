@@ -5,7 +5,7 @@
 	{{ key['key'] }}: {{ key['value'] }}
 {% endfor %}
 
-{% if foreman_deploy_dhcp_scenario == 'internal' %}
+{% if foreman_deploy_dhcp_scenario == 'internal' and foreman_instance_dhcp_all_networks %}
 dhcp::pools:
 	{% for network in foreman_deploy_networks | rejectattr('name', 'equalto', foreman_instance_deploy_network) %}
  	{{ network['name'] }}:
