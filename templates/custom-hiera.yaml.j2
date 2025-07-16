@@ -14,5 +14,4 @@ dhcp::pools:
  		gateway: {{ network['network_gateway'] }}
 		range: {{ network['range_start'] }} {{ network['range_end'] }}
 	{% endfor %}
-
 {% endif %}
